@@ -1,20 +1,17 @@
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { Button, Header, Modal } from 'semantic-ui-react'
+import { Button, Header} from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
 import { useNavigate } from 'react-router'
-import { useEffect } from "react";
 import { useState } from 'react'
-import { changeImage, changeName, changeMail, changePhone, changeItem, toExit, addItem } from '../../features/OrderSlice';
+import { changeImage, changeName, changeMail, changePhone,  toExit, addItem } from '../../features/ContactSlice';
 
 
 
 
 
 const EditPage = () => {
-  const newOne = useAppSelector((state) => state.contacts.new);
   const inputData = useAppSelector((state) => state.contacts.contacts);
   const [navigateState, setNavigateSate] = useState(false)
-  const key = useAppSelector((state) => state.contacts.key);
   const dispatch = useAppDispatch();
   const navigate = useNavigate()
   if (navigateState) {
@@ -44,13 +41,7 @@ const EditPage = () => {
 
 
   };
-  // const newHandleSubmit = (event) => {
-  //   event.preventDefault();
-  //   dispatch(changeItem(key))
-  //   dispatch(toExit())
-  //   redirect()
 
-  // };
 
   return (
     <>

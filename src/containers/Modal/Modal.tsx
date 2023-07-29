@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { Button, Header, Modal } from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
-import { changeImage, changeName, changeMail, changePhone, closeForModul, removeItem, changeItem, toExit, toNewOpen, setReload } from '../../features/OrderSlice';
+import { changeImage, changeName, changeMail, changePhone, closeForModul, removeItem, changeItem, toExit, toNewOpen, setReload } from '../../features/ContactSlice';
 
 
 
@@ -25,8 +25,8 @@ const ModalForm1 = () => {
 
   return (
     <Modal
-      onClose={() => { dispatch(closeForModul()), console.log(`false`, open) }}
-      onOpen={() => { dispatch(toNewOpen(true)), console.log(`false`, open) }}
+      onClose={() => { dispatch(closeForModul()) }}
+      onOpen={() => { dispatch(toNewOpen(true)) }}
       open={openForModul}
     >
       <Modal.Header>Контакт</Modal.Header>

@@ -1,11 +1,9 @@
 import Spinner from "../../components/UI/spinner/spinner";
 import "./ItemBlock.css";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { add } from "../../features/CartSlice";
-import { addItem, changeItem, removeItem, toNewOpen, toOpen } from "../../features/OrderSlice";
-import { useEffect, useState } from "react";
-import { getItems, removeFromArr } from "../../features/CounterSlice";
-import { render } from "react-dom";
+import { toNewOpen } from "../../features/ContactSlice";
+import { useEffect } from "react";
+
 interface Contact {
   name: string,
   phone: number | string,
@@ -24,10 +22,10 @@ const ItemBlock = (props: Props) => {
   const dispatch = useAppDispatch();
   const arr = props.arr
   useEffect(() => {
-    
+
   }, [reload])
-  
-  
+
+
   return <>
     {!loading && <div className="ItemBlock">
       <h1>{props.name}</h1>
@@ -40,8 +38,6 @@ const ItemBlock = (props: Props) => {
             </h3>
 
           </div>
-          {/* <button onClick={() => dispatch(toOpen())}>Redirect</button> */}
-
         </div>
 
       })}
