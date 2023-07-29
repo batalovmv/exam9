@@ -28,7 +28,16 @@ const ModalForm = () => {
   };
 
   return (
-    <>
+    <Modal
+      onClose={() => dispatch(toOpen(false))}
+      onOpen={() => dispatch(toOpen(true))}
+      new={false}
+      open={open}
+      trigger={<Button>Show Modal</Button>}
+    >
+      <Modal.Header>Order</Modal.Header>
+      <Modal.Content >
+        <Modal.Description>
           <Header> Добавьте товар</Header>
           <Form onSubmit={!newOne ? handleSubmit : newHandleSubmit}>
             <Form.Group widths='equal'>
@@ -83,8 +92,10 @@ const ModalForm = () => {
               label='Label with htmlFor'
             />
           </Form>
-    </>
+        </Modal.Description>
+      </Modal.Content>
+    </Modal>
   )
 }
 
-export default ModalForm
+export default ModalForm1

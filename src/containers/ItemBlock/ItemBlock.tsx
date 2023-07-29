@@ -22,6 +22,9 @@ const ItemBlock = (props: Props) => {
   const loading = useAppSelector((state) => state.contacts.isLoading);
   const dispatch = useAppDispatch();
   const arr = props.arr
+  useEffect(() => {
+    
+  }, [arr.length])
 
 
 
@@ -30,8 +33,8 @@ const ItemBlock = (props: Props) => {
     <button className="orderButton" onClick={() => { dispatch(toOpen(e)) }} >Добавить</button>
     {!loading && <div className="ItemBlock">
       <h1>{props.name}</h1>
-      {arr.map((e: any) => {
-        return <div onClick={() => { dispatch(toNewOpen(e)) }} key={e.index} className='itemBlock' >
+      {arr.map((e: any,index:number) => {
+        return <div onClick={() => { dispatch(toNewOpen(e)) }} key={index} className='itemBlock' >
           <img className="imgBlock" src={e[1].image} alt="" />
           <div className="itemBox">
             <h3 className='itemTitle'>  {e[1].name}

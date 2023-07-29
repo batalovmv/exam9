@@ -39,6 +39,7 @@ export const getContacts = createAsyncThunk(
   async () => {
     const response = await axios.get<AxiosRequestConfig, AxiosResponse>('/contacts.json')
     const newData = Object.entries(response.data)
+    console.log(newData)
     return newData
   }
 )
@@ -104,10 +105,10 @@ const ContactsSlice = createSlice({
       axios.post<AxiosRequestConfig, AxiosResponse>('/contacts.json', state.contacts)
     },
     changeItem: (state, action) => {
-      axios.put<AxiosRequestConfig, AxiosResponse>(`/dishes/${action.payload}/.json`, state.contacts)
+      axios.put<AxiosRequestConfig, AxiosResponse>(`/contacts/${action.payload}/.json`, state.contacts)
     },
     removeItem: (state, action) => {
-      axios.delete<AxiosRequestConfig, AxiosResponse>(`/dishes/${action.payload}.json`)
+      axios.delete<AxiosRequestConfig, AxiosResponse>(`/contacts/${action.payload}.json`)
     },
   },
 
