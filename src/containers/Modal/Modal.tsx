@@ -22,6 +22,7 @@ const ModalForm1 = () => {
     dispatch(setReload())
   };
 
+
   return (
     <Modal
       onClose={() => { dispatch(closeForModul()), console.log(`false`, open) }}
@@ -75,26 +76,34 @@ const ModalForm1 = () => {
             </Form.Group>
 
 
-          
+
 
             <Button
               type="button"
               content='Изменить'
               onClick={() => {
-                dispatch(changeItem(key))
-                dispatch(toExit())
-                dispatch(closeForModul())
-                dispatch(setReload())
+                if (inputData.image.length > 0 && inputData.mail.length > 0 && inputData.phone !== 0 && inputData.name.length > 0) {
+                  dispatch(changeItem(key))
+                  dispatch(toExit())
+                  dispatch(closeForModul())
+                  dispatch(setReload())
+                } else {
+                  alert('Введены не все данные')
+                }
+
               }}
             />
             <Button
               type="button"
               content='Удалить'
               onClick={() => {
+
                 dispatch(removeItem(key))
                 dispatch(toExit())
                 dispatch(closeForModul())
                 dispatch(setReload())
+                alert('Вы успешно удалили контакт')
+
               }}
             />
 
