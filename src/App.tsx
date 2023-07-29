@@ -1,5 +1,5 @@
 import { MainPage } from "./MainPage";
-import Shop from "./containers/Counter/ContactsBlock";
+import Shop from "./containers/ContactsBlock/ContactsBlock";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import EditPage from "./containers/Modal/EditPage";
 const App = () => {

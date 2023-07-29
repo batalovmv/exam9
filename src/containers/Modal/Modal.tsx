@@ -3,11 +3,7 @@ import { Button, Header, Modal } from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
 import { changeImage, changeName, changeMail, changePhone, closeForModul, removeItem, changeItem, toExit, toNewOpen, setReload } from '../../features/ContactSlice';
 
-
-
-
-
-const ModalForm1 = () => {
+const ModalForm = () => {
   const openForModul = useAppSelector((state) => state.contacts.openForModul);
   const inputData = useAppSelector((state) => state.contacts.contacts);
   const key = useAppSelector((state) => state.contacts.key);
@@ -114,4 +110,4 @@ const ModalForm1 = () => {
   )
 }
 
-export default ModalForm1
+export default ModalForm

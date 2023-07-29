@@ -4,8 +4,8 @@ import { getContacts, toOpen } from "../../features/ContactSlice";
 import { useEffect } from "react";
 import ItemBlock from "../ItemBlock/ItemBlock";
 import { useNavigate } from 'react-router'
-import ModalForm1 from "../Modal/Modal";
-
+import ModalForm from "../Modal/Modal";
+import { Button } from 'semantic-ui-react'
 
 
 
@@ -41,14 +41,14 @@ const ContactsBlock = () => {
     <div className="container">
       <div className="ContactsBlock">
         <div className="Products">
-
-          <button className="orderButton" onClick={redirect} >Добавить новый контакт</button>
+          <Button className="orderButton" onClick={redirect}>Добавить новый контакт</Button>
+         
           <ItemBlock name={'dishes'} arr={contactsData}></ItemBlock>
 
         </div>
 
       </div>
-      {openForModul && <ModalForm1 />}
+      {openForModul && <ModalForm />}
     </div>
 
 
