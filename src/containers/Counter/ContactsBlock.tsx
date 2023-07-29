@@ -1,12 +1,12 @@
 import "./ContactsBlock.css";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { getContacts, toOpen } from "../../features/OrderSlice";
-import EditPage from "../Modal/Modal";
+import EditPage from "../Modal/EditPage";
 import { useEffect } from "react";
 import ItemBlock from "../ItemBlock/ItemBlock";
 import { useNavigate } from 'react-router'
 import React, { useState } from 'react'
-import ModalForm1 from "../Modal/Modal copy";
+import ModalForm1 from "../Modal/Modal";
 
 
 
@@ -34,7 +34,7 @@ const ContactsBlock = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(getContacts())
-      
+
     }, 1000)
    
   }, [reload])
