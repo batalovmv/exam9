@@ -4,11 +4,11 @@ export const MainPage = () => (
   <nav>
     <ul>
       <li>
-        <NavLink to="/dishes">Dishes</NavLink>
+        <NavLink to="/dishes">Главная страница</NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/orders">Orders</NavLink>
-      </li>
+      </li> */}
     </ul>
   </nav>
 );

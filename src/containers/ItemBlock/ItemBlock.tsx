@@ -3,7 +3,7 @@ import "./ItemBlock.css";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { add } from "../../features/CartSlice";
 import { addItem, changeItem, removeItem, toNewOpen, toOpen } from "../../features/OrderSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getItems, removeFromArr } from "../../features/CounterSlice";
 import { render } from "react-dom";
 interface Contact {
@@ -21,10 +21,13 @@ interface Props {
 const ItemBlock = (props: Props) => {
   const loading = useAppSelector((state) => state.contacts.isLoading);
   const dispatch = useAppDispatch();
+  const [reload, setReload] = useState(false)
   const arr = props.arr
+
   useEffect(() => {
-    
-  }, [arr.length])
+
+   
+  }, [reload])
 
 
 
@@ -33,7 +36,7 @@ const ItemBlock = (props: Props) => {
     <button className="orderButton" onClick={() => { dispatch(toOpen(e)) }} >Добавить</button>
     {!loading && <div className="ItemBlock">
       <h1>{props.name}</h1>
-      {arr.map((e: any,index:number) => {
+      {arr.map((e: any, index: number) => {
         return <div onClick={() => { dispatch(toNewOpen(e)) }} key={index} className='itemBlock' >
           <img className="imgBlock" src={e[1].image} alt="" />
           <div className="itemBox">
@@ -42,7 +45,7 @@ const ItemBlock = (props: Props) => {
             </h3>
 
           </div>
-          <button onClick={() => { dispatch(removeItem(e[0])) }}>Удалить</button>
+          <button onClick={() => { dispatch(removeItem(e[0])), setReload(!reload) }}>Удалить</button>
         </div>
 
       })}

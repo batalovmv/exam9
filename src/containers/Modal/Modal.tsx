@@ -3,8 +3,8 @@ import { Button, Header, Modal } from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
 import { useNavigate } from 'react-router'
 import { useEffect } from "react";
-import React, { useState } from 'react'
-import { changeImage, changeName, changeMail, changePhone, toNavigateState, changeItem, toExit, addItem } from '../../features/OrderSlice';
+import { useState } from 'react'
+import { changeImage, changeName, changeMail, changePhone, changeItem, toExit, addItem } from '../../features/OrderSlice';
 
 
 
@@ -17,15 +17,20 @@ const ModalForm = () => {
   const [navigateState, setNavigateSate] = useState(false)
   const key = useAppSelector((state) => state.contacts.key);
   const dispatch = useAppDispatch();
-  
+  //  useEffect(() => {
+  //    if (open) {
+
+  //    }
+
+
+  //  }, [])
+
+
   const navigate = useNavigate()
-  // useEffect(() => {
-   
-  // }, [])
   if (navigateState) {
     setTimeout(() => {
       navigate('/dishes')
-    }, 1000)
+    }, 0)
   }
 
   const redirect = () => {
