@@ -1,0 +1,35 @@
+.ContactsBlock {
+  text-align: left;
+  
+}
+
+.ContactsBlock button {
+  margin: 5px;
+}
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
+.h1 {
+  font-size: 2em;
+}
+.itemBlock{
+  display: flex;
+}
+.imgBlock{
+  max-width: 100px;
+  overflow: cover;
+}
+.description{
+  display: block;
+}
+.Shop{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.cart{
+  
+}

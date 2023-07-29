@@ -1,0 +1,13 @@
+.itemBlock{
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+.itemTitle{
+  padding-top: 7px;
+  margin-bottom: 0px;
+}
+.itemPrice{
+  margin-top: 5px;
+}
