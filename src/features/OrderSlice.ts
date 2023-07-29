@@ -13,6 +13,7 @@ export interface contactsState {
   open: boolean
   new: boolean
   key: string
+  navigateState:boolean
   arrContacts: Contact[]
   contacts: Contact
   error: Error | null
@@ -24,6 +25,7 @@ const initialState: contactsState = {
   new: true,
   key: '',
   arrContacts: [],
+  navigateState: false,
   contacts: {
     name: '',
     phone: 0,
@@ -89,6 +91,9 @@ const ContactsSlice = createSlice({
     toExit: (state) => {
       state.open = false
     },
+    toNavigateState: (state, action) => {
+      state.navigateState = action.payload
+    },
     changeName: (state, action) => {
       state.contacts.name = action.payload
     },
@@ -102,13 +107,26 @@ const ContactsSlice = createSlice({
       state.contacts.image = action.payload
     },
     addItem: (state, action) => {
+      state.arrContacts.push(state.contacts)
       axios.post<AxiosRequestConfig, AxiosResponse>('/contacts.json', state.contacts)
     },
     changeItem: (state, action) => {
+      state.arrContacts.forEach(element => {
+        if (element[0] === action.payload) {
+          console.log(`существует`);
+        } else {
+          console.log(`не существует`);
+        }
+      });
       axios.put<AxiosRequestConfig, AxiosResponse>(`/contacts/${action.payload}/.json`, state.contacts)
     },
     removeItem: (state, action) => {
       axios.delete<AxiosRequestConfig, AxiosResponse>(`/contacts/${action.payload}.json`)
+      state.arrContacts.map((e, i) => {
+        if (e[0] === action.payload) {
+          state.arrContacts.splice(i, 0)
+        }
+      })
     },
   },
 
@@ -143,5 +161,5 @@ const ContactsSlice = createSlice({
 })
 
 
-export const { toOpen, toExit, changeName, changePhone, changeMail, changeImage, changeItem, addItem, removeItem, toNewOpen } = ContactsSlice.actions;
+export const { toOpen, toExit, changeName, changePhone, changeMail, changeImage, changeItem, addItem, removeItem, toNewOpen,toNavigateState } = ContactsSlice.actions;
 export default ContactsSlice.reducer
