@@ -33,7 +33,7 @@ const ItemBlock = (props: Props) => {
       <h1>{props.name}</h1>
       {arr.map((e: any, index: number) => {
         return <div onClick={() => dispatch(toNewOpen(e))} key={index} className='itemBlock' >
-          <img className="imgBlock" src={e[1].image} alt="" />
+          <img className="imgBlock" src={e[1].image} alt="некорректная ссылка" />
           <div className="itemBox">
             <h3 className='itemTitle'>  {e[1].name}
 

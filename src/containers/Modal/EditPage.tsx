@@ -28,23 +28,34 @@ const EditPage = () => {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addItem(inputData))
-    dispatch(toExit())
-    redirect()
+
+    if (inputData.mail.length > 0 && inputData.phone !== 0 && inputData.name.length > 0) {
+      if (inputData.image.length === 0) {
+        dispatch(changeImage('https://kartinkof.club/uploads/posts/2022-12/1670493543_kartinkof-club-p-kartinki-net-8.jpg'))
+
+      }
+      dispatch(addItem(inputData))
+      dispatch(toExit())
+      redirect()
+    } else {
+      alert('Введены не все данные')
+    }
+
+
 
   };
-  const newHandleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(changeItem(key))
-    dispatch(toExit())
-    redirect()
+  // const newHandleSubmit = (event) => {
+  //   event.preventDefault();
+  //   dispatch(changeItem(key))
+  //   dispatch(toExit())
+  //   redirect()
 
-  };
+  // };
 
   return (
     <>
       <Header> Добавьте товар</Header>
-      <Form onSubmit={!newOne ? handleSubmit : newHandleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Form.Group widths='equal'>
           <Form.Field
             type='text'
@@ -93,8 +104,8 @@ const EditPage = () => {
           type="submit"
           id='form-button-control-public'
           control={Button}
-          content='Confirm'
-          label='Label with htmlFor'
+          content='Отправить'
+          label='Отправить данные'
         />
       </Form>
     </>
