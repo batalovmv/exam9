@@ -40,10 +40,10 @@ const ContactsBlock = () => {
   return (
     <div className="container">
       <div className="ContactsBlock">
-        <div className="Products">
-          <Button className="orderButton" onClick={redirect}>Добавить новый контакт</Button>
-         
-          <ItemBlock name={'dishes'} arr={contactsData}></ItemBlock>
+        <div className="Contacts">
+          <Button className="contactButton" onClick={redirect}>Добавить новый контакт</Button>
+
+          <ItemBlock name={'contacts'} arr={contactsData}></ItemBlock>
 
         </div>
 

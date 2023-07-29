@@ -3,6 +3,7 @@ import { Button, Header} from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
 import { useNavigate } from 'react-router'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import { changeImage, changeName, changeMail, changePhone,  toExit, addItem } from '../../features/ContactSlice';
 
 
@@ -45,6 +46,7 @@ const EditPage = () => {
 
   return (
     <>
+      <NavLink to="/dishes">Главная страница</NavLink>
       <Header> Добавьте товар</Header>
       <Form onSubmit={handleSubmit}>
         <Form.Group widths='equal'>
@@ -86,9 +88,11 @@ const EditPage = () => {
             placeholder='Cсылка на изображение'
             value={inputData.image}
           />
+       
 
         </Form.Group>
-
+        <h3>Превью картинки</h3>
+        <img className="imgBlock" src={inputData.image} alt="некорректная ссылка" />
 
         <Form.Field
 

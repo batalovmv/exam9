@@ -45,8 +45,7 @@ export const getContacts = createAsyncThunk(
   async () => {
     const response = await axios.get<AxiosRequestConfig, AxiosResponse>('/contacts.json')
     const newData = Object.entries(response.data)
-    console.log(newData)
-    return newData
+        return newData
   }
 )
 
