@@ -10,7 +10,7 @@ import { changeImage, changeName, changeMail, changePhone, changeItem, toExit, a
 
 
 
-const ModalForm = () => {
+const EditPage = () => {
   const open = useAppSelector((state) => state.contacts.open);
   const newOne = useAppSelector((state) => state.contacts.new);
   const inputData = useAppSelector((state) => state.contacts.contacts);
@@ -111,4 +111,4 @@ const ModalForm = () => {
   )
 }
 
-export default ModalForm
+export default EditPage

@@ -10,10 +10,11 @@ interface Contact {
   image: string,
 }
 export interface contactsState {
+  openForModul: boolean
   open: boolean
   new: boolean
   key: string
-  reload:boolean
+  reload: boolean
   navigateState: boolean
   arrContacts: Contact[]
   contacts: Contact
@@ -22,10 +23,11 @@ export interface contactsState {
 }
 
 const initialState: contactsState = {
+  openForModul: false,
   open: false,
   new: true,
   key: '',
-  reload:false,
+  reload: false,
   arrContacts: [],
   navigateState: false,
   contacts: {
@@ -73,19 +75,26 @@ const ContactsSlice = createSlice({
   initialState,
 
   reducers: {
-    toOpen: (state) => {
-     
+    // changeOpenStatus: (state, action) => {
+    //   state.open = action.payload
+    //       },
+    toOpen: (state, action) => {
+      state.open = action.payload
       state.new = false
       state.contacts.name = ''
       state.contacts.mail = ''
       state.contacts.phone = ''
       state.contacts.image = ''
     },
+    closeForModul: (state) => {
+      state.openForModul = false
+    },
     toNewOpen: (state, action) => {
-      
+      state.openForModul = true
+      state.open = true
       state.new = true
       state.contacts.name = action.payload[1].name
-      state.contacts.price = action.payload[1].price
+      state.contacts.phone = action.payload[1].price
       state.contacts.phone = action.payload[1].phone
       state.contacts.image = action.payload[1].image
       state.key = action.payload[0]
@@ -159,5 +168,5 @@ const ContactsSlice = createSlice({
 })
 
 
-export const { toOpen, toExit, changeName, changePhone, changeMail, changeImage, changeItem, addItem, removeItem, toNewOpen, toNavigateState } = ContactsSlice.actions;
+export const { toOpen, toExit, changeName, changePhone, changeMail, changeImage, changeItem, addItem, removeItem, toNewOpen, toNavigateState, changeOpenStatus, closeForModul } = ContactsSlice.actions;
 export default ContactsSlice.reducer

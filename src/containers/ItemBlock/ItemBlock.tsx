@@ -26,7 +26,7 @@ const ItemBlock = (props: Props) => {
 
   useEffect(() => {
 
-   
+
   }, [reload])
 
 
@@ -37,7 +37,7 @@ const ItemBlock = (props: Props) => {
     {!loading && <div className="ItemBlock">
       <h1>{props.name}</h1>
       {arr.map((e: any, index: number) => {
-        return <div onClick={() => { dispatch(toNewOpen(e)) }} key={index} className='itemBlock' >
+        return <div onClick={() => dispatch(toNewOpen(e))} key={index} className='itemBlock' >
           <img className="imgBlock" src={e[1].image} alt="" />
           <div className="itemBox">
             <h3 className='itemTitle'>  {e[1].name}
@@ -45,6 +45,7 @@ const ItemBlock = (props: Props) => {
             </h3>
 
           </div>
+          {/* <button onClick={() => dispatch(toOpen())}>Redirect</button> */}
           <button onClick={() => { dispatch(removeItem(e[0])), setReload(!reload) }}>Удалить</button>
         </div>
 

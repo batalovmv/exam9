@@ -1,18 +1,19 @@
 import "./ContactsBlock.css";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { getContacts, toOpen } from "../../features/OrderSlice";
-import ModalForm from "../Modal/Modal";
+import EditPage from "../Modal/Modal";
 import { useEffect } from "react";
 import ItemBlock from "../ItemBlock/ItemBlock";
 import { useNavigate } from 'react-router'
 import React, { useState } from 'react'
+import ModalForm1 from "../Modal/Modal copy";
 
 
 
 
 const ContactsBlock = () => {
   const contactsData = useAppSelector((state) => state.contacts.arrContacts);
-  const open = useAppSelector((state) => state.contacts.open);
+  const openForModul = useAppSelector((state) => state.contacts.openForModul);
   const navigateState = useAppSelector((state) => state.contacts.navigateState);
   const reload = useAppSelector((state) => state.contacts.reload);
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ const ContactsBlock = () => {
   }
 
   const redirect = () => {
-    dispatch(toOpen())
+    dispatch(toOpen(true))
     navigate('/orders')
 
   
@@ -48,8 +49,8 @@ const ContactsBlock = () => {
         </div>
 
       </div>
-      {/* <button onClick={dispatch(toOpen(true))}>Redirect</button> */}
-      {open && <ModalForm />}
+      {/* <button onClick={()=>dispatch(toOpen())}>Redirect</button> */}
+      {openForModul && <ModalForm1 />}
     </div>
 
 

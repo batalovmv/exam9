@@ -1,45 +1,40 @@
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { Button, Header, Modal } from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
-import { changeImage, changeName, changeMail, changePhone, toOpen, changeItem, toExit, addItem } from '../../features/OrderSlice';
+import { changeImage, changeName, changeMail, changePhone, closeForModul, changeItem, toExit, toNewOpen } from '../../features/OrderSlice';
 
 
 
 
 
-const ModalForm = () => {
-  const open = useAppSelector((state) => state.contacts.open);
+const ModalForm1 = () => {
+  const openForModul = useAppSelector((state) => state.contacts.openForModul);
   const newOne = useAppSelector((state) => state.contacts.new);
   const inputData = useAppSelector((state) => state.contacts.contacts);
   const key = useAppSelector((state) => state.contacts.key);
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(addItem(inputData))
-    dispatch(toExit())
 
-  };
   const newHandleSubmit = (event) => {
     event.preventDefault();
     dispatch(changeItem(key))
     dispatch(toExit())
-
+    console.log(`open`, open);
   };
 
   return (
     <Modal
-      onClose={() => dispatch(toOpen(false))}
-      onOpen={() => dispatch(toOpen(true))}
-      new={false}
-      open={open}
-      trigger={<Button>Show Modal</Button>}
+      onClose={() => { dispatch(closeForModul()), console.log(`false`, open) }}
+      onOpen={() => { dispatch(toNewOpen(true)), console.log(`false`, open ) }}
+      // new={false}
+      open={openForModul}
+    // trigger={<Button>Show Modal</Button>}
     >
       <Modal.Header>Order</Modal.Header>
       <Modal.Content >
         <Modal.Description>
           <Header> Добавьте товар</Header>
-          <Form onSubmit={!newOne ? handleSubmit : newHandleSubmit}>
+          <Form onSubmit={newHandleSubmit}>
             <Form.Group widths='equal'>
               <Form.Field
                 type='text'
@@ -94,7 +89,7 @@ const ModalForm = () => {
           </Form>
         </Modal.Description>
       </Modal.Content>
-    </Modal>
+    </Modal >
   )
 }
 
