@@ -49,25 +49,6 @@ export const getContacts = createAsyncThunk(
     return newData
   }
 )
-// export const postContact = createAsyncThunk(
-//   'post/contacts',
-//   async (contact: Contact) => {
-//     await axios.post<AxiosRequestConfig, AxiosResponse>('/contacts.json', contact)
-//   }
-// )
-// export const putContact = createAsyncThunk(
-//   'put/contacts',
-//   async ( contact: Contact )=> {
-//     axios.put<AxiosRequestConfig, AxiosResponse>(`/dishes/${state.key}/.json`, contact)
-//     await axios.post<AxiosRequestConfig, AxiosResponse>('contacts.json', contact);
-//   }
-// )
-// export const deleteContact = createAsyncThunk(
-//   'delete/contacts',
-//   async (key:string) => {
-//   await  axios.delete<AxiosRequestConfig, AxiosResponse>(`/dishes/${action.payload}.json`)
-//   }
-// )
 
 const ContactsSlice = createSlice({
   name: 'contacts',
@@ -75,9 +56,6 @@ const ContactsSlice = createSlice({
   initialState,
 
   reducers: {
-    // changeOpenStatus: (state, action) => {
-    //   state.open = action.payload
-    //       },
     toOpen: (state, action) => {
       state.open = action.payload
       state.new = false
@@ -118,21 +96,16 @@ const ContactsSlice = createSlice({
       state.contacts.image = action.payload
     },
     addItem: (state, action) => {
-      // state.arrContacts.push(state.contacts)
       axios.post<AxiosRequestConfig, AxiosResponse>('/contacts.json', state.contacts)
     },
     changeItem: (state, action) => {
-      // state.arrContacts.forEach(element => {
-      //   if (element[0] === action.payload) {
-      //     console.log(`существует`);
-      //   } else {
-      //     console.log(`не существует`);
-      //   }
-      // });
       axios.put<AxiosRequestConfig, AxiosResponse>(`/contacts/${action.payload}/.json`, state.contacts)
     },
     removeItem: (state, action) => {
-      axios.delete<AxiosRequestConfig, AxiosResponse>(`/contacts/${action.payload}.json`)
+      axios.delete<AxiosRequestConfig, AxiosResponse>(`/contacts/${action.payload}/.json`).then(() => {
+      });
+    },
+    setReload: (state) => {
       state.reload = !state.reload
     },
   },
@@ -151,6 +124,7 @@ const ContactsSlice = createSlice({
 
       .addCase(getContacts.fulfilled, (state, action) => {
         state.arrContacts = action.payload
+        console.log(`данные получены`);
         state.isLoading = false;
 
       })
@@ -168,5 +142,5 @@ const ContactsSlice = createSlice({
 })
 
 
-export const { toOpen, toExit, changeName, changePhone, changeMail, changeImage, changeItem, addItem, removeItem, toNewOpen, toNavigateState, changeOpenStatus, closeForModul } = ContactsSlice.actions;
+export const { toOpen, toExit, changeName, changePhone, changeMail, changeImage, changeItem, addItem, removeItem, toNewOpen, toNavigateState, setReload, closeForModul } = ContactsSlice.actions;
 export default ContactsSlice.reducer

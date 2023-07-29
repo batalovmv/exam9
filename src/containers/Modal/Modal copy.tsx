@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { Button, Header, Modal } from 'semantic-ui-react'
 import { Form, Input } from 'semantic-ui-react'
-import { changeImage, changeName, changeMail, changePhone, closeForModul, changeItem, toExit, toNewOpen } from '../../features/OrderSlice';
+import { changeImage, changeName, changeMail, changePhone, closeForModul, removeItem, changeItem, toExit, toNewOpen, setReload } from '../../features/OrderSlice';
 
 
 
@@ -19,13 +19,14 @@ const ModalForm1 = () => {
     event.preventDefault();
     dispatch(changeItem(key))
     dispatch(toExit())
-    console.log(`open`, open);
+    dispatch(closeForModul())
+    dispatch(setReload())
   };
 
   return (
     <Modal
       onClose={() => { dispatch(closeForModul()), console.log(`false`, open) }}
-      onOpen={() => { dispatch(toNewOpen(true)), console.log(`false`, open ) }}
+      onOpen={() => { dispatch(toNewOpen(true)), console.log(`false`, open) }}
       // new={false}
       open={openForModul}
     // trigger={<Button>Show Modal</Button>}
@@ -82,10 +83,33 @@ const ModalForm1 = () => {
 
               type="submit"
               id='form-button-control-public'
+
               control={Button}
-              content='Confirm'
-              label='Label with htmlFor'
+              content='Изменить'
+
             />
+
+            <Button
+              type="button"
+              content='Изменить'
+              onClick={() => {
+                dispatch(changeItem(key))
+                dispatch(toExit())
+                dispatch(closeForModul())
+                dispatch(setReload())
+              }}
+            />
+            <Button
+              type="button"
+              content='Удалить'
+              onClick={() => {
+                dispatch(removeItem(key))
+                dispatch(toExit())
+                dispatch(closeForModul())
+                dispatch(setReload())
+              }}
+            />
+
           </Form>
         </Modal.Description>
       </Modal.Content>

@@ -34,6 +34,7 @@ const ContactsBlock = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(getContacts())
+      
     }, 1000)
    
   }, [reload])

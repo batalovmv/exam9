@@ -20,20 +20,15 @@ interface Props {
 
 const ItemBlock = (props: Props) => {
   const loading = useAppSelector((state) => state.contacts.isLoading);
+  const reload = useAppSelector((state) => state.contacts.reload);
   const dispatch = useAppDispatch();
-  const [reload, setReload] = useState(false)
   const arr = props.arr
-
   useEffect(() => {
-
-
+    
   }, [reload])
-
-
-
-
+  
+  
   return <>
-    <button className="orderButton" onClick={() => { dispatch(toOpen(e)) }} >Добавить</button>
     {!loading && <div className="ItemBlock">
       <h1>{props.name}</h1>
       {arr.map((e: any, index: number) => {
@@ -46,7 +41,7 @@ const ItemBlock = (props: Props) => {
 
           </div>
           {/* <button onClick={() => dispatch(toOpen())}>Redirect</button> */}
-          <button onClick={() => { dispatch(removeItem(e[0])), setReload(!reload) }}>Удалить</button>
+
         </div>
 
       })}

@@ -11,21 +11,11 @@ import { changeImage, changeName, changeMail, changePhone, changeItem, toExit, a
 
 
 const EditPage = () => {
-  const open = useAppSelector((state) => state.contacts.open);
   const newOne = useAppSelector((state) => state.contacts.new);
   const inputData = useAppSelector((state) => state.contacts.contacts);
   const [navigateState, setNavigateSate] = useState(false)
   const key = useAppSelector((state) => state.contacts.key);
   const dispatch = useAppDispatch();
-  //  useEffect(() => {
-  //    if (open) {
-
-  //    }
-
-
-  //  }, [])
-
-
   const navigate = useNavigate()
   if (navigateState) {
     setTimeout(() => {
