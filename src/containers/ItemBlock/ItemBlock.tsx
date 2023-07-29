@@ -31,15 +31,14 @@ const ItemBlock = (props: Props) => {
     {!loading && <div className="ItemBlock">
       <h1>{props.name}</h1>
       {arr.map((e: any) => {
-        return <div key={e.index} className='itemBlock' >
+        return <div onClick={() => { dispatch(toNewOpen(e)) }} key={e.index} className='itemBlock' >
           <img className="imgBlock" src={e[1].image} alt="" />
           <div className="itemBox">
             <h3 className='itemTitle'>  {e[1].name}
 
             </h3>
-            <h5 className='itemPrice' >Цена :{e[1].price} тг</h5>
+
           </div>
-          <button className="orderButton" onClick={() => { dispatch(toNewOpen(e)) }} >Изменить</button>
           <button onClick={() => { dispatch(removeItem(e[0])) }}>Удалить</button>
         </div>
 
