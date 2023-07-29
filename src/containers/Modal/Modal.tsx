@@ -42,7 +42,7 @@ const ModalForm = () => {
                 value={inputData.name}
               />
               <Form.Field
-                type='number'
+                type='tel'
                 onChange={(e) => { dispatch(changePhone(e.target.value)) }}
                 id='form-input-control-phone'
                 control={Input}
@@ -51,7 +51,7 @@ const ModalForm = () => {
                 value={inputData.phone}
               />
               <Form.Field
-                type='text'
+                type='mail'
                 onChange={(e) => { dispatch(changeMail(e.target.value)) }}
                 id='form-input-control-adress'
                 control={Input}
@@ -60,7 +60,7 @@ const ModalForm = () => {
                 value={inputData.mail}
               />
               <Form.Field
-                type='text'
+                type='url'
                 onChange={(e) => { dispatch(changeImage(e.target.value)) }}
                 id='form-input-control-adress'
                 control={Input}

@@ -47,7 +47,7 @@ const EditPage = () => {
   return (
     <>
       <NavLink to="/dishes">Главная страница</NavLink>
-      <Header> Добавьте товар</Header>
+      <Header> Добавьте Контакт</Header>
       <Form onSubmit={handleSubmit}>
         <Form.Group widths='equal'>
           <Form.Field
@@ -56,35 +56,35 @@ const EditPage = () => {
             id='form-input-control-first-name'
             control={Input}
             htmlFor="name"
-            label='Имя'
+            label='Имя*'
             placeholder='Имя'
             value={inputData.name}
 
           />
           <Form.Field
-            type='number'
+            type='tel'
             onChange={(e) => { dispatch(changePhone(e.target.value)) }}
             id='form-input-control-phone'
             control={Input}
-            label='Телефон'
+            label='Телефон*'
             placeholder='Номер телефона'
             value={inputData.phone}
           />
           <Form.Field
-            type='text'
+            type='email'
             onChange={(e) => { dispatch(changeMail(e.target.value)) }}
             id='form-input-control-adress'
             control={Input}
-            label='email'
+            label='email*'
             placeholder='Email'
             value={inputData.mail}
           />
           <Form.Field
-            type='text'
+            type='url'
             onChange={(e) => { dispatch(changeImage(e.target.value)) }}
             id='form-input-control-adress'
             control={Input}
-            label='ссылка'
+            label='ссылка на картинку'
             placeholder='Cсылка на изображение'
             value={inputData.image}
           />
@@ -99,8 +99,8 @@ const EditPage = () => {
           type="submit"
           id='form-button-control-public'
           control={Button}
-          content='Отправить'
-          label='Отправить данные'
+          content='Отправить Данные'
+         
         />
       </Form>
     </>
